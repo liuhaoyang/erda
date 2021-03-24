@@ -1,4 +1,4 @@
-name: golangci-it
+name: ci-it
 on:
   push:
     tags:
