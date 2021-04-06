@@ -1,0 +1,38 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the develop branch
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+  # Checking out the repository which is to be actioned
+      - uses: actions/checkout@v2
+  # Implementing action on repository
+      - uses: VinnyBabuManjaly/copyright-action@v1.0.0
+        with:
+         CopyrightString: 'Copyright check\nAll rights reserved (c)\n'
+         FileType: '.py, .txt'
+         Path: 'testfolder1/, testfolder2'
+         IgnorePath: 'testfolder1/a/, testfolder3'
+  # Creates pull request with all changes in file
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v2
+        with:
+         token: ${{ secrets.GITHUB_TOKEN }}
