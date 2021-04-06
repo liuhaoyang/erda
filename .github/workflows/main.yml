@@ -6,9 +6,13 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the develop branch
   push:
-    branches: [ develop ]
+    branches: 
+      - develop
+      - master
   pull_request:
-    branches: [ develop ]
+    branches: 
+      - develop
+      - master
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -28,7 +32,7 @@ jobs:
       - uses: VinnyBabuManjaly/copyright-action@v1.0.0
         with:
          CopyrightString: 'Copyright check\nAll rights reserved (c)\n'
-         FileType: '.py, .txt'
+         FileType: '.py, .go'
          Path: 'testfolder1/, testfolder2'
          IgnorePath: 'testfolder1/a/, testfolder3'
   # Creates pull request with all changes in file
