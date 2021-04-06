@@ -33,7 +33,7 @@ jobs:
         with:
          CopyrightString: 'Copyright check\nAll rights reserved (c)\n'
          FileType: '.py, .go'
-         Path: 'testfolder1/, testfolder2'
+         Path: 'pkg/,modules/'
          IgnorePath: 'testfolder1/a/, testfolder3'
   # Creates pull request with all changes in file
       - name: Create Pull Request
